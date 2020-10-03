@@ -1,8 +1,7 @@
 jobs:
   test:
-    executor:
-      name: node/default
-      tag: '13'
+    docker:
+      - image: 'cimg/base:stable'
     steps:
       - checkout
       - node/install-packages:

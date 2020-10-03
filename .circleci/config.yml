@@ -1,7 +1,7 @@
 jobs:
   test:
     docker:
-      - image: 'cimg/node:stable'
+      - image: 'cimg/node:current'
     steps:
       - checkout
       - node/install-packages:

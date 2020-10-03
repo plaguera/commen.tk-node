@@ -6,6 +6,8 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
+      - node/install:
+          install-yarn: true
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:

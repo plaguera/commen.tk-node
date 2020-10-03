@@ -1,24 +1,15 @@
 jobs:
-  install-node:
-    docker:
-      - image: 'cimg/base:stable'
+  test:
+    executor:
+      name: node/default
+      tag: '13'
     steps:
       - checkout
-      - node/install:
-          install-yarn: true
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
-          name: Install Dependencies
-          command: yarn install --immutable
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-      - run: node --version
+          command: yarn run test
+          name: Run YARN tests
 version: 2.1
 orbs:
   node: circleci/node@4.1.0

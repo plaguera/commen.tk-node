@@ -1,24 +1,18 @@
 {
-    "name": "tfm-pedro-laguera-software",
+    "name": "commen.tk-node",
     "version": "2.0.1",
-    "repository": "git@github.com:ULL-ESIT-GRADOII-TFG/tfm-pedro-laguera-software.git",
+    "repository": "git@github.com:plaguera/commen.tk-node.git",
     "author": "Pedro Lagüera <laguerapedro@gmail.com>",
     "license": "MIT",
     "scripts": {
-        "analyze": "source-map-explorer public/client.js",
         "build": "tsc",
-        "bundle:dev": "cd frontend && npx webpack --mode development",
-        "bundle:prod": "cd frontend && npx webpack --mode production",
-        "cdn": "ts-node src/uploadStaticBucket.ts",
         "coverage": "codecov",
         "start": "yarn start:fg",
         "start:fg": "NODE_ENV=PRODUCTION node dist/index.js",
         "start:bg": "NODE_ENV=PRODUCTION nohup node dist/index.js > output.log &",
         "stop": "lsof -ti :443 | xargs --no-run-if-empty kill -9",
         "test": "nyc --reporter=lcov --reporter=text mocha -r ts-node/register src/test/**/*.test.ts",
-        "watch": "concurrently \"yarn watch:front\" \"yarn watch:back\"",
-        "watch:front": "concurrently \"cd frontend && npx webpack --mode development --watch\" \"http-server -p 8080 --cors public\" \"http-server -p 8081 ~/Code/TFM/client\"",
-        "watch:back": "NODE_ENV=DEVELOPMENT nodemon src/index.ts"
+        "watch": "NODE_ENV=DEVELOPMENT nodemon src/index.ts"
     },
     "devDependencies": {
         "@types/chai": "^4.2.11",
